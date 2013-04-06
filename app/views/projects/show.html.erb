@@ -1,0 +1,10 @@
+<h1><%= "#{@project.title} - #{@project.description}"%> </h1>
+
+
+
+<h2><%= link_to "Items", project_items_url(@project.id) %></h2>
+
+<center>
+	<%= link_to "Edit project", edit_project_url(@project.id), class: "btn" %>
+	<%= link_to "Delete project", project_url(@project.id), method: :delete, class: "btn" %>
+</center>

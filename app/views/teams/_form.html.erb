@@ -1,0 +1,27 @@
+<%= form_for(@team) do |f| %>
+	<%= f.label :name, "team name" %>	
+	<%= f.text_field :name %><br> 
+
+	<%= f.label :team_members %>
+	<% User.all.each do |user| %>
+	<%= 
+		check_box_tag( 
+			"team[user_ids][]", 
+			user.id, 
+			@team.user_ids.include?(user.id),
+			id: "team_user_#{user.id}" )
+	%>
+	<%# how does the .include? work? %>
+
+	
+	<%= label_tag "team_user_#{user.id}", user.name, style: "display:inline" %>
+	<br>
+	<% end %>
+	
+	<%= hidden_field_tag "team[user_ids][]" %>
+
+	<%= f.submit %>
+
+<% end %>
+
+<%# does class = "new_team" tell it what URL to go to?

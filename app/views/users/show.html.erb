@@ -1,0 +1,12 @@
+<h1><%= @user.name %>'s teams</h1>
+<h2> 
+	<% @user.teams.each do |team| %>
+	<li><%= link_to team.name, team_url(team.id) %></li>
+	<br>
+	<% end %>
+</h2>
+<center>
+	<%= link_to "Edit user", edit_user_url(@user.id), class: "btn" %>
+	<%= link_to "Delete user", user_url(@user.id), method: :delete, class: "btn" %>
+</center>
+

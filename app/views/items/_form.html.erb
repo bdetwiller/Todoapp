@@ -1,0 +1,27 @@
+<%= form_for(@item) do |f| %>
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+	<br>
+
+	<%= f.label :description %>
+	<%= f.text_field :description %>
+	<br>
+												<%# name, array to abstract, value, label %>
+	<%= f.collection_select :project_id, Project.all, :id, :title %>
+	<br>
+<%# button name, value %>
+	<%= f.radio_button :completed, "true"%>
+<%# button name, text to display, value makes it clickable %>
+	<%= f.label :completed, "Completed", :value => "true", style: "display:inline" %> 
+	<br>
+
+	<%= f.radio_button :completed, "false" %>
+	<%= f.label :completed, "In progress", :value => "false", style: "display:inline"%>
+	<br>
+	<br>
+
+
+
+	<%= f.submit %>
+
+<% end %>

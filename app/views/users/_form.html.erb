@@ -1,0 +1,21 @@
+<%= form_for(@user) do |f| %>
+	<%= f.label :name %>
+	<%= f.text_field :name %><br>
+
+	<%= f.label :teams %>
+	<% Team.all.each do |team| %>
+	<%= 
+		check_box_tag( "user[team_ids][]", 
+			team.id, @user.team_ids.include?(team.id),
+			id: "team_#{team.id}" )
+	%>
+	
+	<%= label_tag "team_#{team.id}", team.name, style: "display:inline" %>
+	<br>
+	<% end %>
+	<br>
+	<%= hidden_field_tag "user[team_ids][]" %>
+
+	<%= f.submit %>
+
+<% end %>

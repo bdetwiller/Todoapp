@@ -1,0 +1,14 @@
+<h1>Projects</h1>
+
+<h2>
+	<% @projects.each do |project| %>
+	<li><%= link_to project.title, project_url(project.id) %> 
+		- 
+		<%= project.description %></li>
+		<br>
+	<% end %>
+
+</h2>
+<center>
+	<%= link_to "Create a project", new_project_url, class: "btn" %>
+</center>
